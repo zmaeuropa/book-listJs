@@ -67,7 +67,14 @@ class Book {
     }
 
     static displayBooks() {
+      const books = Store.getBooks();
 
+      books.forEach(function(book) {
+        const ui = new UI;
+
+        //Add book to ui
+        ui.addBookToList(book);
+      });
     }
 
     static addBook(book) {
@@ -82,6 +89,9 @@ class Book {
 
     }
   }
+
+  //Dom Load Event
+  document.addEventListener('DOMContentLoaded', Store.displayBooks);
   // Event Listener for add book
   document.getElementById('book-form').addEventListener('submit', function(e){
     // Get form values
